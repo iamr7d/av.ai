@@ -1,24 +1,64 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Background3D from './components/Background3D';
+import MainContent from './components/MainContent';
+import AuthCallback from './components/AuthCallback';
+import { AuthProvider, useAuth } from './context/AuthContext';
+
+// Main App content with Auth check
+const AppContent = () => {
+  const { loading } = useAuth();
+  
+  // Force dark mode for black sky theme
+  useEffect(() => {
+    // Always use dark mode
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+    
+    // Prevent switching to light mode
+    const observer = new MutationObserver(() => {
+      if (!document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.add('dark');
+      }
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
+
+  // Show loading state while checking auth
+  if (loading) {
+    return (
+      <div className="App min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-pulse text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="App min-h-screen bg-black">
+      <Navbar />
+      <Routes>
+        <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="*" element={<MainContent />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Background3D />
+        <AppContent />
+      </AuthProvider>
+    </Router>
   );
 }
 

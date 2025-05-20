@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+/* Custom styles for glassmorphism */
+.glass-morphism {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Glass card with visible borders */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Dark mode support for glass cards */
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* For forced-colors mode (replacing -ms-high-contrast) */
+@media (forced-colors: active) {
+  .glass-card {
+    border: 1px solid ButtonText;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Curved card styles */
+.curved-card {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image styles */
+.curved-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Text styles */
+.curved-card .text-content {
+  padding: 15px;
+  color: #fff;
+}
+
+.curved-card .text-content h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.curved-card .text-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Button styles */
+.curved-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background 0.3s;
+}
+
+.curved-card .btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .curved-card {
+    margin: 0 15px;
   }
 }
