@@ -170,10 +170,12 @@ const Navbar = () => {
             </span>
             <span className="font-bold text-xl text-white tracking-tight" style={{lineHeight:'1.1'}}>Avocado Space</span>
           </div>
-          
-          {/* Main Navigation */}
+            {/* Main Navigation */}
           <div className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-100 hover:text-primary-light transition-colors">Home</a>
+            {user && (
+              <a href="#feed" className="text-gray-100 hover:text-primary-light transition-colors">Feed</a>
+            )}
             <a href="#search" className="text-gray-100 hover:text-primary-light transition-colors">Search</a>
             <a href="#features" className="text-gray-100 hover:text-primary-light transition-colors">Features</a>
             <a href="#about" className="text-gray-100 hover:text-primary-light transition-colors">About</a>
@@ -206,11 +208,11 @@ const Navbar = () => {
                   </div>                  <a href="#profile" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
                     Your Profile
                   </a>
+                  <a href="#feed" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
+                    Opportunity Feed
+                  </a>
                   <a href="#saved" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
                     Saved Opportunities
-                  </a>
-                  <a href="#settings" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
-                    Settings
                   </a>
                   <button 
                     onClick={handleSignOut}
