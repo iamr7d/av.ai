@@ -189,33 +189,13 @@ const Navbar = () => {
                 Sign In
               </button>
             ) : (
-              // Logged in - show user menu
-              <div className="relative group">
-                <button className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-white rounded-full bg-black/30 hover:bg-white/10 border border-white/10 transition-colors">
-                  <span>{user.user_metadata?.full_name || user.email}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                
-                {/* Dropdown menu */}
-                <div className="absolute right-0 mt-2 w-48 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                  <div className="px-4 py-2 border-b border-white/10">
-                    <p className="text-sm text-white font-medium truncate">{user.email}</p>
-                  </div>                  <a href="#profile" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
-                    Your Profile
-                  </a>
-                  <a href="#saved" className="block px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10">
-                    Saved Opportunities
-                  </a>
-                  <button 
-                    onClick={handleSignOut}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-200 hover:text-white hover:bg-white/10"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              </div>
+              // Logged in - show sign out button
+              <button 
+                onClick={handleSignOut}
+                className="px-5 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg"
+              >
+                Sign Out
+              </button>
             )}
 
             {/* Mobile Menu Button */}
