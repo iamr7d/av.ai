@@ -10,7 +10,7 @@ Start-Sleep -Seconds 2
 
 # Start frontend server
 Write-Host "Starting Frontend (React)..." -ForegroundColor Green
-Start-Process -FilePath "powershell.exe" -ArgumentList "-NoExit -Command cd frontend; npm start"
+Start-Process -FilePath "powershell.exe" -ArgumentList "-NoExit -Command cd frontend; npm install; npm start"
 
 Write-Host "`nBoth servers are starting. Please wait a moment..." -ForegroundColor Yellow
 Write-Host "Backend will be available at http://localhost:5000" -ForegroundColor Magenta
