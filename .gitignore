@@ -1,4 +1,19 @@
-<<<<<<< HEAD
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+
 # Node modules
 node_modules/
 
@@ -15,29 +30,11 @@ yarn-error.log*
 
 # Environment variables
 .env
-=======
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
->>>>>>> 3dc3f7d15d285ae553cbac3757554c3cca57e652
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-<<<<<<< HEAD
 # Build files
 /build
 /dist
@@ -52,14 +49,3 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
-
-# Temporary/backup files
-*.bak
-*.bad
-*.new
-*.fixed
-=======
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
->>>>>>> 3dc3f7d15d285ae553cbac3757554c3cca57e652

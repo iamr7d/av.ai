@@ -1,7 +1,7 @@
 // API service for handling backend requests
 import { supabase } from '../utils/supabaseClient';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Get all opportunities or filtered by simple query
 export const getOpportunities = async (query = '') => {
