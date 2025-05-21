@@ -270,48 +270,6 @@
   z-index: 2;
 }
 
-.profile-avatar-linkedin {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 5px solid #fff;
-  box-shadow: 0 4px 24px 0 rgba(106,17,203,0.18);
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  z-index: 3;
-  margin-right: 2.2rem;
-}
-
-.profile-cover-username {
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 0 2px 16px rgba(60,60,90,0.18);
-  margin-bottom: 0.2rem;
-  letter-spacing: -1px;
-}
-
-@media (max-width: 700px) {
-  .profile-cover-content {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 1.2rem 1.2rem 1.2rem;
-  }
-  .profile-avatar-linkedin {
-    width: 80px;
-    height: 80px;
-    margin-right: 1rem;
-    margin-bottom: 0.7rem;
-  }
-  .profile-cover-username {
-    font-size: 1.5rem;
-  }
-}
-
 /* Position the name/job container below the profile image, centered horizontally */
 .profile-name-container {
   position: absolute;

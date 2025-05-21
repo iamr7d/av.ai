@@ -49,7 +49,6 @@ const Profile = () => {
     if (uploadError) throw uploadError;
     return filePath;
   };
-
   // Parse resume using backend API
   const parseResume = async (file) => {
     if (!file) return null;
@@ -59,7 +58,9 @@ const Profile = () => {
       const formData = new FormData();
       formData.append('file', file);
       
-      const response = await fetch('http://localhost:5000/api/resume/parse', {
+      // Use environment variable or fallback to the relative API path
+      const apiUrl = process.env.REACT_APP_API_URL || '/api';
+      const response = await fetch(`${apiUrl}/resume/parse`, {
         method: 'POST',
         body: formData,
       });

@@ -89,9 +89,7 @@ export function AuthProvider({ children }) {
       setError(error.message);
       return { error };
     }
-  };
-
-  // Sign in with Google
+  };  // Sign in with Google
   const signInWithGoogle = async () => {
     try {
       setError(null);
@@ -100,7 +98,22 @@ export function AuthProvider({ children }) {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`
+          // Use current domain dynamically for the callback URL
+          redirectTo: `${window.location.origin}/auth/callback`,
+          // Ensure Supabase shows our app domain instead of Supabase URL
+          queryParams: {
+            // Force the use of our app's branding for login
+            // This makes Google show our app's domain instead of Supabase URL
+            access_type: 'offline',
+            prompt: 'consent',
+            // Add these parameters to improve Google login experience
+            // and ensure our app's domain appears in the authorization page
+            hd: window.location.hostname, // Restrict to our domain
+            login_hint: '', // Clear any previous login hint
+            include_granted_scopes: 'true',
+            // Custom app name to display
+            supabase_client_name: 'PhD Opportunity Finder'
+          }
         }
       });
       
@@ -123,42 +136,7 @@ export function AuthProvider({ children }) {
       setError(error.message);
       return { error };
     }
-  };
-
-  // Sign in with LinkedIn
-  const signInWithLinkedIn = async () => {
-    try {
-      setError(null);
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'linkedin',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-          queryParams: {
-            response_type: 'code',
-            scope: 'r_liteprofile r_emailaddress'
-          }
-        }
-      });
-      
-      if (error) {
-        console.error('OAuth Error:', error);
-        setError(error.message);
-        return { error };
-      }
-      
-      // If we have a provider token, the sign-in was successful
-      if (data?.provider && data?.url) {
-        window.location.href = data.url;
-        return { data };
-      }
-      
-      return { error: new Error('Failed to get OAuth URL') };
-    } catch (error) {
-      console.error('OAuth Error:', error);
-      setError(error.message);
-      return { error };
-    }
-  };
+  };  
 
   // Phone authentication step 1: Send OTP
   const signInWithPhone = async (phone) => {
@@ -264,7 +242,6 @@ export function AuthProvider({ children }) {
     signUp,
     signIn,
     signInWithGoogle,
-    signInWithLinkedIn,
     signInWithPhone,
     verifyPhoneOTP,
     signOut,
