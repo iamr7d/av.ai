@@ -5,7 +5,6 @@ import Features from './Features';
 import FeaturedOpportunities from './FeaturedOpportunities';
 import Profile from './Profile.js';
 import SavedOpportunities from './SavedOpportunities';
-import Feed from './Feed';
 
 const MainContent = () => {
   const { user } = useAuth();
@@ -31,8 +30,6 @@ const MainContent = () => {
         return <Profile />;
       case 'saved':
         return <SavedOpportunities />;
-      case 'feed':
-        return <Feed />;
       case 'home':
       default:
         return (
